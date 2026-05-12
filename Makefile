@@ -85,7 +85,7 @@ dist:
 	GOOS=darwin  GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-darwin-arm64  ./cmd/helm
 	GOOS=windows GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-windows-amd64.exe ./cmd/helm
 
-## help: Show this help message
+## help: Print this help message
 .PHONY: help
 help:
 	@echo "Usage: make <target>"
