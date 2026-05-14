@@ -81,7 +81,6 @@ install:
 dist:
 	@mkdir -p $(BUILD_DIR)/dist
 	GOOS=linux   GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-linux-amd64   ./cmd/helm
-	GOOS=linux   GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-linux-arm64   ./cmd/helm
-	GOOS=darwin  GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-darwin-amd64  ./cmd/helm
 	GOOS=darwin  GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-darwin-arm64  ./cmd/helm
-	GOOS=windows GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-windows-amd64.exe ./cmd/helm
+	@echo "Skipping linux/arm64, darwin/amd64, and windows builds — not needed for my workflow"
+	@echo "Built dist binaries in $(BUILD_DIR)/dist/"
