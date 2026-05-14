@@ -65,6 +65,10 @@ fmt:
 vet:
 	$(GO) vet ./...
 
+## check: Run fmt, vet, and lint together — useful before committing
+.PHONY: check
+check: fmt vet lint
+
 ## clean: Remove build artifacts
 .PHONY: clean
 clean:
