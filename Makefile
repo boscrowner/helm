@@ -76,6 +76,7 @@ install:
 	$(GO) install $(GOFLAGS) -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" ./cmd/helm
 
 ## dist: Build release binaries for multiple platforms
+# Note: building only the platforms I actually use (linux/amd64 and darwin/arm64 for my M-series Mac)
 .PHONY: dist
 dist:
 	@mkdir -p $(BUILD_DIR)/dist
@@ -84,10 +85,3 @@ dist:
 	GOOS=darwin  GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-darwin-amd64  ./cmd/helm
 	GOOS=darwin  GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-darwin-arm64  ./cmd/helm
 	GOOS=windows GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS) $(LD_VERSION_FLAGS)" -o $(BUILD_DIR)/dist/$(BINARY_NAME)-windows-amd64.exe ./cmd/helm
-
-## help: Print this help message
-.PHONY: help
-help:
-	@echo "Usage: make <target>"
-	@echo ""
-	@grep -E '^## ' $(MAKEFILE_LIST) | sed 's/## /  /' | column -t -s ':'
